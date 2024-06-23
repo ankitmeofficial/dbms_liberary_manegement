@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - MyWebsite</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.service-box {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 30%;
+    margin-bottom: 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.service-box img {
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    border-radius: 5px 5px 0 0;
+}
+
+.service-box p {
+    padding: 15px;
+    font-size: 16px;
+    color: #333;
+}
+
+.service-box:hover {
+    transform: translateY(-10px);
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Liberary management or more</div>
+            <ul class="nav-links">
+                <li><a href="welcome.php">Home</a></li>
+                <li><a href="online_book.html">Online_Books</a></li>
+                <li><a href="Liberary_Book_record.html">Liberary_Book_record</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="about.html"></a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="content">
+
+        <!-- content of this page will start form here  -->
+        <div class="container">
+            <div class="service-box">
+                <img src="image1.jpg" alt="Service 1">
+                <p>Service 1 description goes here.</p>
+            </div>
+            <div class="service-box">
+                <img src="image2.jpg" alt="Service 2">
+                <p>Service 2 description goes here.</p>
+            </div>
+            <div class="service-box">
+                <img src="image3.jpg" alt="Service 3">
+                <p>Service 3 description goes here.</p>
+            </div>
+            <div class="service-box">
+                <img src="image4.jpg" alt="Service 4">
+                <p>Service 4 description goes here.</p>
+            </div>
+            <div class="service-box">
+                <img src="image5.jpg" alt="Service 5">
+                <p>Service 5 description goes here.</p>
+            </div>
+            <div class="service-box">
+                <img src="image6.jpg" alt="Service 6">
+                <p>Service 6 description goes here.</p>
+            </div>
+        </div>
+
+
+       
+    </section>
+    <footer>
+        <p>&copy; 2024 MyWebsite. All rights reserved.</p>
+    </footer>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    console.log("Service page loaded!");
+});
+
+</script>
+</body>
+</html>

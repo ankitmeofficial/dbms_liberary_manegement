@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Form</title>
+    <!-- <link rel="stylesheet" href="styles.css" /> -->
+    <style>
+      /* for havbar css */
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+      }
+      header {
+        background: #333;
+        color: #fff;
+        padding: 10px 0;
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 80%;
+        margin: 0 auto;
+      }
+
+      .logo {
+        text-align: center;
+        font-size: xx-large;
+        margin: 29px;
+        background: linear-gradient(270deg, #df8908 50.41%, #8415ff 90.25%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 15px;
+      }
+
+      .nav-links li {
+        display: inline;
+      }
+
+      .nav-links a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 1em;
+        padding: 5px 10px;
+        transition: background 0.3s;
+      }
+
+      .nav-links a:hover {
+        background: #555;
+        border-radius: 5px;
+      }
+
+      .hero {
+        background: url("hero-bg.jpg") no-repeat center center/cover;
+        height: 80vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        text-align: center;
+      }
+
+      .hero-content {
+        max-width: 600px;
+      }
+
+      .hero h1 {
+        font-size: 3em;
+        margin-bottom: 20px;
+      }
+
+      .hero p {
+        font-size: 1.2em;
+        margin-bottom: 20px;
+      }
+
+      .btn {
+        background: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background 0.3s;
+      }
+
+      .btn:hover {
+        background: #0056b3;
+      }
+
+      /* for main content */
+      main {
+        font-family: "Arial", sans-serif;
+        /* background: linear-gradient(270deg, #df8908 50.41%, #8415ff 90.25%); */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .contact-form-container {
+        background-color: rgba(230, 214, 214, 0.9);
+        padding: 40px;
+        border-radius: 16px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-width: 500px;
+        width: 100%;
+        margin: 20px;
+      }
+
+      .contact-form-container h1 {
+        text-align: center;
+        margin-bottom: 24px;
+        color: #fff;
+        background: linear-gradient(270deg, #df8908 50.41%, #8415ff 90.25%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .contact-form-container label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: #555;
+      }
+
+      .contact-form-container input,
+      .contact-form-container textarea {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 16px;
+        border: 1px solid #ddd;
+        border-radius: 16px;
+        font-size: 16px;
+        transition: border-color 0.3s;
+        color: #fff;
+        background: linear-gradient(270deg, #df8908 50.41%, #8415ff 90.25%);
+      }
+
+      .contact-form-container input:focus,
+      .contact-form-container textarea:focus {
+        border-color: #8415ff;
+        outline: none;
+      }
+
+      .contact-form-container button {
+        width: 100%;
+        padding: 14px;
+        background-color: #8415ff;
+        border: none;
+        border-radius: 16px;
+        color: #ffffff;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .contact-form-container button:hover {
+        background-color: #6e13cc;
+      }
+
+      .contact-form-container .footer {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 14px;
+        color: #777;
+      }
+
+      .contact-form-container .footer a {
+        color: #8415ff;
+        text-decoration: none;
+      }
+
+      .contact-form-container .footer a:hover {
+        text-decoration: underline;
+      }
+
+      .error {
+        color: red;
+        margin-bottom: 16px;
+        font-size: 14px;
+      }
+      .footer {
+        font-weight: bold;
+        background: #333;
+        color: #fff;
+        text-align: center;
+        padding: 10px 0;
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+      }
+    </style>
+    <script>
+      function validateForm() {
+        let valid = true;
+
+        // Clear previous errors
+        document
+          .querySelectorAll(".error")
+          .forEach((e) => (e.textContent = ""));
+
+        // Validate name
+        const name = document.getElementById("name").value;
+        if (name.length > 30) {
+          document.getElementById("nameError").textContent =
+            "Name must be less than 30 characters";
+          valid = false;
+        }
+
+        // Validate email
+        const email = document.getElementById("email").value;
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+          document.getElementById("emailError").textContent =
+            "Please enter a valid email address";
+          valid = false;
+        }
+
+        // Validate subject
+        const subject = document.getElementById("subject").value;
+        const subjectWords = subject.trim().split(/\s+/).length;
+        if (subjectWords > 30) {
+          document.getElementById("subjectError").textContent =
+            "Subject must be less than 30 words";
+          valid = false;
+        }
+
+        // Validate message
+        const message = document.getElementById("message").value;
+        const messageWords = message.trim().split(/\s+/).length;
+        if (messageWords > 100) {
+          document.getElementById("messageError").textContent =
+            "Message must be less than 100 words";
+          valid = false;
+        }
+
+        return valid;
+      }
+    </script>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo">Liberary management or more</div>
+        <ul class="nav-links">
+          <li><a href="welcome.php">Home</a></li>
+          <li><a href="online_book.html">Online_Books</a></li>
+          <li><a href="Liberary_Book_record.html">Liberary_Book_record</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="about.html"></a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="main">
+      <div class="contact-form-container">
+        <h1>Contact Us</h1>
+        <form onsubmit="return validateForm()">
+          <div class="error" id="nameError"></div>
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required />
+
+          <div class="error" id="emailError"></div>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
+
+          <div class="error" id="subjectError"></div>
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject" required />
+
+          <div class="error" id="messageError"></div>
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="6" required></textarea>
+
+          <button type="submit">Submit</button>
+        </form>
+        <div class="footer">
+          <p>
+            &copy; 2024 Your Company. All rights reserved.
+            <a href="#">Privacy Policy</a>
+          </p>
+        </div>
+      </div>
+      <footer>
+        <p>&copy; 2024 MyWebsite. All rights reserved.</p>
+      </footer>
+    </div>
+  </body>
+</html>
